@@ -1,0 +1,33 @@
+<apex:page controller="SampleSearchController" action="{!initAction}" showHeader="true" sidebar="false">
+    <apex:pageMessages showDetail="true" />
+    <apex:form >
+    <apex:pageBlock title="Search Mobile Phone">
+        <!-- Search Conditions -->
+        <apex:pageBlockSection >
+            <apex:panelGrid columns="3">
+                <!-- 端末名 -->
+                <apex:outputText value="{!$ObjectType.Mobile_Phone__c.Fields.MobilePhoneName__c.Label}"/>
+                <apex:outputText value="：" />
+                <apex:inputText value="{!conditionMobilePhone.MobilePhoneName__c}"/>
+                <!-- 端末所有者ユーザID -->
+                <apex:outputText value="{!$ObjectType.Mobile_Phone__c.Fields.MobilePhoneOwnerUserId__c.Label}"/>
+                <apex:outputText value="：" />
+                <apex:inputField value="{!conditionMobilePhone.MobilePhoneOwnerUserId__c}"/>
+                <!-- -->
+                <apex:commandButton value="Query" action="{!queryAction}"/>
+                <apex:outputText value="" />
+                <apex:commandButton value="New" action="{!URLFOR($Page.SampleEdit)}"/>
+            </apex:panelGrid>
+        </apex:pageBlockSection>
+        <!-- Search Result Area -->
+        <apex:pageBlockTable value="{!mobilePhoneDatas}" var="record" rendered="{!IF(mobilePhoneDatas.size > 0, true, false)}">
+            <apex:column value="{!record.Name}"/>
+            <apex:column value="{!record.MobilePhoneOwnerUserId__c}"/>
+            <apex:column >
+                <apex:facet name="header">{!$ObjectType.Mobile_Phone__c.Fields.MobilePhoneName__c.Label}</apex:facet>
+                <apex:commandLink value="{!record.MobilePhoneName__c}" action="{!URLFOR($Page.SampleEdit)}?Mobile_Phone_ID={!record.Name}" />
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

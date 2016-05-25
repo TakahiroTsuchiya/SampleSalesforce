@@ -1,0 +1,19 @@
+<apex:page controller="SampleListController" action="{!initAction}" showHeader="true" sidebar="false">
+    <apex:pageMessages showDetail="true" />
+    <apex:form >
+    <apex:pageBlock title="List Sample">
+        <apex:pageBlockSection >
+            <apex:panelGrid columns="4">
+                <apex:selectList value="{!leftSelectedItems}" multiselect="true" size="4" style="width:100px;height:100px;">
+                    <apex:selectOptions value="{!leftSelectItems}"></apex:selectOptions>
+                </apex:selectList>
+                <apex:commandButton action="{!addOptions}" value=" > " />
+                <apex:commandButton action="{!removeOptions}" value=" < " />
+                <apex:selectList value="{!rightSelectedItems}" multiselect="true" size="4" style="width:100px;height:100px;">
+                    <apex:selectOptions value="{!rightSelectItems}"></apex:selectOptions>
+                </apex:selectList>
+            </apex:panelGrid>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

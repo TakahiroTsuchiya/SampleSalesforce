@@ -1,0 +1,27 @@
+<apex:page standardController="MainObject__c" extensions="MainObjectExtentions" showHeader="true" sidebar="false">
+    <apex:form >
+    <apex:pageMessages showDetail="true" />
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!mainObjects}" var="record">
+            <apex:column headerValue="{!$ObjectType.MainObject__c.Fields.Name.Label}">
+                <apex:commandLink value="{!record.Name}">
+                </apex:commandLink>
+            </apex:column>
+            <apex:column value="{!record.relationOfM2SByA__c}"/>
+<!--            <apex:column value="{!record.relationOfM2SByA__r.Id}"/>-->
+<!--            <apex:column value="{!record.relationOfM2SByA__r.Name}"/>-->
+            <apex:column value="{!record.relationOfM2SByA__r.dateOfA__c}"/>
+            <apex:column value="{!record.relationOfM2SByA__r.dateOfB__c}"/>
+            <apex:column value="{!record.relationOfM2SByB__c}"/>
+            <apex:column value="{!record.relationOfM2SByB__r.dateOfA__c}"/>
+            <apex:column value="{!record.relationOfM2SByB__r.dateOfB__c}"/>
+            <apex:column value="{!record.relationOfM2SByC__c}"/>
+            <apex:column value="{!record.relationOfM2SByC__r.dateOfA__c}"/>
+            <apex:column value="{!record.relationOfM2SByC__r.dateOfB__c}"/>
+            <apex:column value="{!record.relationOfM2SByD__c}"/>
+            <apex:column value="{!record.relationOfM2SByD__r.dateOfA__c}"/>
+            <apex:column value="{!record.relationOfM2SByD__r.dateOfB__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>
